@@ -1,15 +1,15 @@
-# Chua vooluahela simulatsioonid
+## Chua vooluahela simulatsioonid
 
 See repository sisaldab bakalaureusetöö **„Operatsioonivõimendite mõju kaose dünaamikale Chua vooluahelas“** lisamaterjale.
 
 Töös uuritakse, kuidas operatsioonivõimendi valik mõjutab Chua dioodi voolu-pinge karakteristikut ja Chua vooluahela kaootilist dünaamikat. Repository sisaldab tööga seotud Python koode ja ngspice sisendfaile.
 
-# Sisu
+### Sisu
 
 - `python/` – Python koodid matemaatiliseks modelleerimiseks ja simulatsiooniandmete analüüsiks
 - `ngspice/` – ngspice sisendfailid Chua vooluahela ja operatsioonivõimendite omaduste simuleerimiseks
 
-# Python koodid
+### Python koodid
 
 Kaustas `python/` on töö arvutus- ja analüüsikoodid.
 
@@ -36,7 +36,7 @@ python3 python/simulatsiooniandmete_analyys.py
 
 või kopeerida Jupyteri.
 
-# ngspice sisendfailid
+### ngspice sisendfailid
 
 Kaustas `ngspice/` on simulatsioonide sisendfailid.
 
@@ -56,7 +56,7 @@ ngspice faili käivitamiseks:
 ngspice ngspice/chua_vooluahel.cir
 ```
 
-# Operatsioonivõimendite SPICE mudelfailid
+### Operatsioonivõimendite SPICE mudelfailid
 
 Operatsioonivõimendite SPICE makromudeleid selles repository’s kaasas ei ole. Need tuleb eraldi alla laadida tootjate kodulehtedelt ja panna lokaalselt näiteks kausta `models/`.
 
@@ -80,11 +80,11 @@ Kui mudelfailid asuvad kaustas `models/`, tuleb `.cir` failides kasutada näitek
 .include ../models/OPA445.lib
 ```
 
-## Simulatsiooniandmed
+### Simulatsiooniandmed
 
 Python analüüsikood eeldab, et ngspice simulatsioonidest saadud `.txt` väljundfailid on olemas ja nende nimed vastavad koodis kasutatud failinimedele. Kui failinimed või asukohad muutuvad, tuleb neid muuta ka Python koodis.
 
-## Reprodutseerimiseks vajalik
+### Reprodutseerimiseks vajalik
 
 Tulemuste uuesti saamiseks on vaja:
 
@@ -93,7 +93,7 @@ Tulemuste uuesti saamiseks on vaja:
 3. tootjate operatsioonivõimendite SPICE makromudeleid;
 4. simulatsioonidest saadud väljundandmeid.
 
-## Autor
+### Autor
 
 Annette Bogdanov  
 Bakalaureusetöö  
