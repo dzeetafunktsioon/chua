@@ -1,0 +1,24 @@
+* testskeem Chua dioodi iv-karakteristiku mootmiseks
+
+R1 N003 N001 22K
+R2 N002 N001 220
+R3 N003 N006 22K
+R5 0 N006 3.3K
+R6 0 N005 2.2K
+R7 N005 N002 220
+Rsense N010 N001 10
+
+V1 N008 0 dc -9
+V2 N004 0 dc 9
+V3 N010 0 0
+
+XU1 N001 N005 N004 N008 N002 AD704
+XU2 N001 N006 N004 N008 N003 AD704
+.include ad704.txt
+
+.options savecurrents
+
+.control
+dc V3 -9 +9 1m
+.endc
+.end
