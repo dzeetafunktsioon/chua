@@ -1,0 +1,33 @@
+* testskeem opvoimendi voimenduse-ribalaiuse korrutise maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+
+VIN inp 0 AC 1
+
+R1 inn 0 1k
+R2 out inn 9k
+RL out 0 10k
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.ac dec 100 1 100meg
+
+.control
+reset
+run
+meas ac av0 find vm(out) at=10
+let av3db = av0/sqrt(2)
+meas ac f3db when vm(out)=av3db
+let gbw = 10*f3db
+print av0
+print av3db
+print f3db
+print gbw
+
+set filetype=ascii
+wrdata op07_gbw.txt frequency vm(out)
+.endc
+
+.end

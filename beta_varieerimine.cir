@@ -1,0 +1,56 @@
+* beta voi R4 varieerimine andmestike jaoks
+
+R1 N003 N001 22K
+R2 N002 N001 220
+R3 N003 N006 22K
+
+.param R4val=1.43k
+R4 N001 N007 {R4val}
+
+R5 0 N006 3.3K
+R6 0 N005 2.2K
+R7 N005 N002 220
+
+C1 N007 0 100n
+C2 N001 0 10n
+
+V1 N008 0 dc -9
+V2 N004 0 dc 9
+
+L1 N007 N009 10m
+L2 N009 0 10m
+
+XU1 N001 N005 N004 N008 N002 LM324
+XU2 N001 N006 N004 N008 N003 LM324
+.include LM324.sub.txt
+
+.options savecurrents
+
+.control
+set noaskquit
+set xbrushwidth=1
+set filetype=ascii
+
+foreach r4 0.5k 0.6k 0.7k
+
+    alterparam R4val = $r4
+    reset
+
+    *globaalse dünaamika andmestik
+    tran 1us 50ms
+
+    set fname = lm324_r4_{$r4}.txt
+    wrdata $fname time v(n001) v(n007) @l1[i] @l2[i] @r4[i]
+
+    reset
+
+    *opvõimendite väljundpinge kasvukiiruse andmestik
+    tran 100ns 22ms 20ms
+
+    set fname = lm324_sr_r4_{$r4}.txt
+    wrdata $fname time v(n002) v(n003)
+
+end
+
+.endc
+.end

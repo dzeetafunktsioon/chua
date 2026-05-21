@@ -1,0 +1,24 @@
+* testskeem opvoimendi valjundpinge ulatuse maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+VREF inp 0 DC 0
+VIN in 0 DC 0
+
+RIN in inn 100k
+RFB out inn 100k
+RL out 0 100k
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.dc VIN -10 10 1m
+
+.control
+run
+meas dc uo_min MIN v(out)
+meas dc uo_max MAX v(out)
+print uo_min uo_max
+
+.endc
+.end

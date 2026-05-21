@@ -1,0 +1,48 @@
+* testskeem opvoimendi maksimaalse valjundpinge kasvukiiruse maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+
+VIN inp 0 PULSE(-0.5 0.5 1u 1n 1n 20u 40u)
+
+RFB out inn 1
+RIN inn 0 1e12
+
+RL out 0 10k
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.tran 1n 50u
+
+.control
+reset
+run
+
+meas tran vlow  FIND v(out) AT=40u
+meas tran vhigh FIND v(out) AT=49u
+
+let dv = vhigh - vlow
+let v10 = vlow + 0.1*dv
+let v90 = vlow + 0.9*dv
+
+meas tran t10 WHEN v(out)=v10 RISE=2
+meas tran t90 WHEN v(out)=v90 RISE=2
+
+let sr = 0.8*dv/(t90-t10)
+let sr_us = sr/1e6
+
+print vlow
+print vhigh
+print t10
+print t90
+print sr
+print sr_us
+
+set filetype=ascii
+wrdata op07_sr.txt time v(out)
+
+plot v(out)
+.endc
+
+.end

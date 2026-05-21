@@ -1,0 +1,35 @@
+* testskeem A_ol maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+VIN in 0 DC 0 AC 1
+
+R1 in inn 1k
+R2 out inn 10k
+RL out 0 10k
+
+VREF inp 0 DC 0
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.ac dec 100 1 10meg
+
+.control
+reset
+run
+
+let aol_lin = vm(out)/vm(inn)
+let aol_db = 20*log10(aol_lin)
+
+meas ac aol_lin_10 find aol_lin at=10
+meas ac aol_db_10  find aol_db  at=10
+
+print aol_lin_10
+print aol_db_10
+
+set filetype=ascii
+wrdata op07_aol.txt frequency aol_lin aol_db vm(out) vm(inn)
+
+plot aol_db
+.endc

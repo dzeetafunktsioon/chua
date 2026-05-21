@@ -1,0 +1,27 @@
+* testskeemi opvoimendi sisendnihkepinge maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+
+R3 inp 0 1k
+R1 inn 0 1k
+RF out inn 1meg
+RL out 0 100k
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.op
+
+.control
+reset
+run
+let av = 1001
+let vos = v(out)/av
+print v(out)
+print vos
+.endc
+
+.end
+
+.end

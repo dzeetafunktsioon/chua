@@ -1,0 +1,33 @@
+* testskeem opvoimendi sisendvoolu maaramiseks
+
+VCC vp 0 DC 9
+VEE vn 0 DC -9
+
+VINP inp 0 DC 0
+VINN inn 0 DC 0
+
+RL out 0 100k
+
+XU1 inp inn vp vn out OP07
+.include op07.txt
+
+.op
+
+.control
+reset
+run
+
+let ibp = abs(i(VINP))
+let ibn = abs(i(VINN))
+let ibp_nA = 1e9*ibp
+let ibn_nA = 1e9*ibn
+let ib_avg_nA = 0.5*(ibp_nA + ibn_nA)
+
+print i(VINP)
+print i(VINN)
+print ibp_nA
+print ibn_nA
+print ib_avg_nA
+.endc
+
+.end
