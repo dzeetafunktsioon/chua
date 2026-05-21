@@ -18,15 +18,21 @@ Kaustas `python/` on töö arvutus- ja analüüsikoodid.
 
 Vajalikud Python paketid:
 
+```bash
 pip install numpy pandas matplotlib
+```
 
 Python faili käivitamiseks:
 
+```bash
 python3 python/matemaatiline_modelleerimine.py
+```
 
 või
 
+```bash
 python3 python/simulatsiooniandmete_analyys.py
+```
 
 või kopeerida Jupyteri.
 
@@ -46,8 +52,9 @@ Kaustas `ngspice/` on simulatsioonide sisendfailid.
 
 ngspice faili käivitamiseks:
 
+```bash
 ngspice ngspice/chua_vooluahel.cir
-
+```
 
 # Operatsioonivõimendite SPICE mudelfailid
 
@@ -65,11 +72,13 @@ Mudelfailid on tavaliselt leitavad tootja tootelehelt.
 
 Kui mudelfailid asuvad kaustas `models/`, tuleb `.cir` failides kasutada näiteks selliseid `.include` ridu:
 
+```spice
 .include ../models/AD704.lib
 .include ../models/AD817A.lib
 .include ../models/LM324.sub
 .include ../models/OP07.lib
 .include ../models/OPA445.lib
+```
 
 ## Simulatsiooniandmed
 
