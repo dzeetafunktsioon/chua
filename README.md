@@ -1,8 +1,8 @@
 ## Chua vooluahela simulatsioonid
 
-See repository sisaldab bakalaureusetöö **„Operatsioonivõimendite mõju kaose dünaamikale Chua vooluahelas“** lisamaterjale.
+See repositoorium sisaldab bakalaureusetöö **„Operatsioonivõimendite mõju kaose dünaamikale Chua vooluahelas“** lisamaterjale.
 
-Töös uuritakse, kuidas operatsioonivõimendi valik mõjutab Chua dioodi voolu-pinge karakteristikut ja Chua vooluahela kaootilist dünaamikat. Repository sisaldab tööga seotud Python koode ja ngspice sisendfaile.
+Töös uuritakse, kuidas operatsioonivõimendi valik mõjutab Chua dioodi voolu-pinge karakteristikut ja Chua vooluahela kaootilist dünaamikat. Repositoorium sisaldab tööga seotud Python koode ja ngspice sisendfaile.
 
 ### Sisu
 
@@ -58,7 +58,7 @@ ngspice ngspice/chua_vooluahel.cir
 
 ### Operatsioonivõimendite SPICE mudelfailid
 
-Operatsioonivõimendite SPICE makromudeleid selles repository’s kaasas ei ole. Need tuleb eraldi alla laadida tootjate kodulehtedelt ja panna lokaalselt näiteks kausta `models/`.
+Operatsioonivõimendite SPICE makromudeleid selles repositooriumi kaasas ei ole. Need tuleb eraldi alla laadida tootjate kodulehtedelt.
 
 Simulatsioonides kasutatud operatsioonivõimendid:
 
@@ -67,8 +67,6 @@ Simulatsioonides kasutatud operatsioonivõimendid:
 - LM324 – ON Semiconductor
 - OP07 – Texas Instruments
 - OPA445 – Texas Instruments
-
-Mudelfailid on tavaliselt leitavad tootja tootelehelt.
 
 Kui mudelfailid asuvad kaustas `models/`, tuleb `.cir` failides kasutada näiteks selliseid `.include` ridu:
 
